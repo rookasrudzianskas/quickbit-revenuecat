@@ -20,6 +20,7 @@ export type RootStackParamList = {
   Modal: undefined;
   NotFound: undefined;
   DemoScreen: undefined;
+  Paywall: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
