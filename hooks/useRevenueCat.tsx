@@ -27,6 +27,11 @@ function useRevenueCat() {
       } else {
         await Purchases.configure({ apiKey: APIKeys.apple});
       }
+
+      const offerings = await Purchases.getOfferings();
+      const customerInfo = await Purchases.getCustomerInfo();
+      setCurrentOffering(offerings.current);
+      setCustomerInfo(customerInfo);
     }
     fetchData();
   }, [])
