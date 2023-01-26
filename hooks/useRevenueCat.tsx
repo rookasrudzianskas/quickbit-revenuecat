@@ -33,7 +33,7 @@ function useRevenueCat() {
       setCurrentOffering(offerings.current);
       setCustomerInfo(customerInfo);
     }
-    fetchData();
+    fetchData().catch((e) => console.log(e));
   }, [])
 }
 
