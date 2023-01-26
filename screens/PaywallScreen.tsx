@@ -3,9 +3,12 @@ import React from 'react';
 import {Text, View, StyleSheet, ScrollView, TouchableOpacity} from 'react-native';
 import {Ionicons, MaterialCommunityIcons} from "@expo/vector-icons";
 import {useNavigation} from "@react-navigation/native";
+import useRevenueCat from "../hooks/useRevenueCat";
 
 const PaywallScreen = () => {
   const navigation = useNavigation();
+  const { currentOffering, customerInfo, isProMember } = useRevenueCat();
+
   return (
     <ScrollView className="bg-[#1A2F44] flex-1 relative">
       <View className="m-10 space-y-2">
