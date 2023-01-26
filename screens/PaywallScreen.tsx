@@ -90,6 +90,13 @@ const PaywallScreen = () => {
         <Text className="text-white text-md text-center font-bold mb-1">FREE trial for 1 week...</Text>
         <Text className="text-white">{currentOffering.monthly?.product.priceString}/month after</Text>
       </TouchableOpacity>
+
+      {currentOffering?.annual && (
+        <TouchableOpacity onPress={handleMonthlyPurchase} className="items-center px-10 py-5 bg-[#e5962D] mx-10 rounded-full" activeOpacity={0.7}>
+          <Text className="text-white text-md text-center font-bold mb-1">Save{" "} {((1 - currentOffering.annual?.product.price! / (currentOffering.monthly?.product.price! * 12)) * 100).toPrecision(2)}% Annually</Text>
+          <Text className="text-white">{currentOffering.annual?.product.priceString}/year</Text>
+        </TouchableOpacity>
+      ) }
     </ScrollView>
   );
 };
