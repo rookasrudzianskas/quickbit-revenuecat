@@ -1,7 +1,7 @@
 //@ts-nocheck
 import React from 'react';
 import {Text, View, StyleSheet, ScrollView, TouchableOpacity} from 'react-native';
-import {Ionicons} from "@expo/vector-icons";
+import {Ionicons, MaterialCommunityIcons} from "@expo/vector-icons";
 import {useNavigation} from "@react-navigation/native";
 
 const PaywallScreen = () => {
@@ -20,7 +20,11 @@ const PaywallScreen = () => {
         <Ionicons name="md-close-circle-sharp" size={32} color="#e5962D" />
       </TouchableOpacity>
 
-      <View>
+      <View className="flex items-center">
+        <MaterialCommunityIcons name="trophy-award" size={150} color="#e5962D" />
+      </View>
+
+      <View className="space-y-5 px-10 pt-5 pb-5">
         <View className="flex-row space-x-10 items-center">
           <Ionicons name="md-key" size={32} color="#e5962D" />
           <View className="flex-1">
