@@ -6,12 +6,14 @@ import {StatusBar} from "expo-status-bar";
 import {Image, ScrollView, TouchableOpacity} from "react-native";
 import {Ionicons} from "@expo/vector-icons";
 import ActionRow from "../components/ActionRow";
+import {useNavigation} from "@react-navigation/native";
 
 export default function HomeScreen({}: RootTabScreenProps<'TabOne'>) {
+  const navigation = useNavigation();
   return (
     <ScrollView>
       <View className="flex-1 bg-gray-100 pt-10 relative">
-        <TouchableOpacity activeOpacity={0.7} className="absolute z-50 top-12 right-10 items-center">
+        <TouchableOpacity onPress={() => navigation.navigate('Paywall')} activeOpacity={0.7} className="absolute z-50 top-12 right-10 items-center">
           <Ionicons name="person-circle" size={30} color="#e5962D" />
           <Text className="text-center text-[#e5962D]">UPGRADE</Text>
         </TouchableOpacity>
