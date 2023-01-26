@@ -18,52 +18,56 @@ export default function HomeScreen({}: RootTabScreenProps<'TabOne'>) {
 
         <Image source={{uri: 'https://i.imgur.com/e14NE49.png'}} className="w-full h-64" />
 
-        <ActionRow
-          title="Track Workout"
-          screen="Demo"
-          color="#e5962D"
-          icon="fitness"
-          vertical
-        />
+        <View className="mx-5">
+          <View className="flex-row justify-between space-x-2">
+            <ActionRow
+              title="Track Workout"
+              screen="Demo"
+              color="#e5962D"
+              icon="fitness"
+              vertical
+            />
 
-        <ActionRow
-          title="Browse Workouts"
-          screen="Demo"
-          color="#1982c4"
-          icon="library"
-          vertical
-        />
+            <ActionRow
+              title="Browse Workouts"
+              screen="Demo"
+              color="#1982c4"
+              icon="library"
+              vertical
+            />
+          </View>
 
-        <ActionRow
-          title="Connect With Friends"
-          screen="Demo"
-          color="#F44174"
-          icon="share-social"
-        />
+          <ActionRow
+            title="Connect With Friends"
+            screen="Demo"
+            color="#F44174"
+            icon="share-social"
+          />
 
-        <ActionRow
-          title="Add an Exercise"
-          screen="Demo"
-          color="#8AC926"
-          icon="add-circle"
-          requiresPro
-        />
+          <ActionRow
+            title="Add an Exercise"
+            screen="Demo"
+            color="#8AC926"
+            icon="add-circle"
+            requiresPro
+          />
 
-        <ActionRow
-          title="Create a Routine"
-          screen="Demo"
-          color="#C03221"
-          icon="md-time"
-          requiresPro
-        />
+          <ActionRow
+            title="Create a Routine"
+            screen="Demo"
+            color="#C03221"
+            icon="md-time"
+            requiresPro
+          />
 
-        <ActionRow
-          title="Join Challenges"
-          screen="Demo"
-          color="#23967F"
-          icon="trophy"
-          requiresPro
-        />
+          <ActionRow
+            title="Join Challenges"
+            screen="Demo"
+            color="#23967F"
+            icon="trophy"
+            requiresPro
+          />
+        </View>
 
       <StatusBar style="auto" />
       </View>
