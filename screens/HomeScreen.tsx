@@ -5,6 +5,7 @@ import React from "react";
 import {StatusBar} from "expo-status-bar";
 import {Image, ScrollView, TouchableOpacity} from "react-native";
 import {Ionicons} from "@expo/vector-icons";
+import ActionRow from "../components/ActionRow";
 
 export default function HomeScreen({}: RootTabScreenProps<'TabOne'>) {
   return (
@@ -16,6 +17,15 @@ export default function HomeScreen({}: RootTabScreenProps<'TabOne'>) {
         </TouchableOpacity>
 
         <Image source={{uri: 'https://i.imgur.com/e14NE49.png'}} className="w-full h-64" />
+
+        <ActionRow
+          title="Track Workout"
+          screen="Demo"
+          color="#e5962D"
+          icon="fitness"
+          vertical
+        />
+
       <StatusBar style="auto" />
       </View>
     </ScrollView>
