@@ -19,11 +19,12 @@ const PaywallScreen = () => {
   }
 
   const restorePurchases = async () => {
-    try {
-      await Purchases.restoreTransactions();
-      Alert.alert("Success", "Your purchases have been restored");
-    } catch (e) {
-      Alert.alert("Error", "Something went wrong");
+    const purchaserInfo = await Purchases.restorePurchases();
+
+    if(purchaserInfo.activeSubscriptions.length > 0) {
+      Alert.alert("Success", "Your subscription has been restored");
+    } else {
+      Alert.alert("Error", "No subscriptions found");
     }
   }
 
