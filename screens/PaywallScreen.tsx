@@ -26,6 +26,10 @@ const PaywallScreen = () => {
     } else {
       Alert.alert("Error", "No subscriptions found");
     }
+
+    if(purchaserInfo.entitlements.active.pro) {
+      navigation.goBack();
+    }
   }
 
   const handleAnnualPurchase = async () => {
