@@ -16,7 +16,7 @@ type Props = {
 const ActionRow = ({title, screen, color, requiresPro, icon, vertical}: Props) => {
   const navigation = useNavigation();
   return (
-    <TouchableOpacity className={`flex m-2 flex-1 justify-center items-center py-6 shadow-sm rounded-lg space-x-2 ${vertical ? "flex-col" : "flex-row"}`} activeOpacity={0.7} style={{backgroundColor: color}}>
+    <TouchableOpacity onPress={() => navigation.navigate(screen)} className={`flex m-2 flex-1 justify-center items-center py-6 shadow-sm rounded-lg space-x-2 ${vertical ? "flex-col" : "flex-row"}`} activeOpacity={0.7} style={{backgroundColor: color}}>
       <Ionicons name={icon} size={24} color="white" />
       <Text className="text-white font-bold text-lg">{title}</Text>
     </TouchableOpacity>
