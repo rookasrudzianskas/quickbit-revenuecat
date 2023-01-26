@@ -7,9 +7,12 @@ import {Image, ScrollView, TouchableOpacity} from "react-native";
 import {Ionicons} from "@expo/vector-icons";
 import ActionRow from "../components/ActionRow";
 import {useNavigation} from "@react-navigation/native";
+import useRevenueCat from "../hooks/useRevenueCat";
 
 export default function HomeScreen({}: RootTabScreenProps<'TabOne'>) {
   const navigation = useNavigation();
+  const { currentOffering, customerInfo, isProMember } = useRevenueCat();
+  console.log(currentOffering, customerInfo, isProMember);
   return (
     <ScrollView>
       <View className="flex-1 bg-gray-100 pt-10 relative">
