@@ -126,7 +126,6 @@ const PaywallScreen = () => {
           <Text className="text-white">{currentOffering.annual?.product.priceString}/year</Text>
         </TouchableOpacity>
       ) }
-
       <TouchableOpacity activeOpacity={0.7} onPress={restorePurchases}>
         <Text className="text-center text-[#e5962D]">Restore Purchases</Text>
       </TouchableOpacity>
