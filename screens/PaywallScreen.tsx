@@ -19,6 +19,44 @@ const PaywallScreen = () => {
       <TouchableOpacity className="absolute top-5 right-5" onPress={() => navigation.goBack()}>
         <Ionicons name="md-close-circle-sharp" size={32} color="#e5962D" />
       </TouchableOpacity>
+
+      <View>
+        <View className="flex-row space-x-10 items-center">
+          <Ionicons name="md-key" size={32} color="#e5962D" />
+          <View className="flex-1">
+            <Text className="text-white font-bold text-lg">
+              Access to all pro features
+            </Text>
+            <Text className="text-white text-sm font-extralight">
+              Upgrade to Premium version of the app and enoy all the exclusive features available for only to pro users. {" "}
+            </Text>
+          </View>
+        </View>
+
+        <View className="flex-row space-x-10 items-center">
+          <Ionicons name="md-person-add-outline" size={32} color="#e5962D" />
+          <View className="flex-1">
+            <Text className="text-white font-bold text-lg">
+              Helpline 24/7 support from Personal Trainers
+            </Text>
+            <Text className="text-white text-sm font-extralight">
+              Get unlimited access to our finest personal trainers and get your questions answered in real time. {" "}
+            </Text>
+          </View>
+        </View>
+
+        <View className="flex-row space-x-10 items-center">
+          <Ionicons name="md-star" size={32} color="#e5962D" />
+          <View className="flex-1">
+            <Text className="text-white font-bold text-lg">
+              Unlock Limited Edition Content
+            </Text>
+            <Text className="text-white text-sm font-extralight">
+              Unlock exclusive content that you can not get anywhere else, like special exclusive videos, articles and more. {" "}
+            </Text>
+          </View>
+        </View>
+      </View>
     </ScrollView>
   );
 };
