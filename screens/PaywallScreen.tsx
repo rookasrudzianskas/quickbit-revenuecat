@@ -18,6 +18,27 @@ const PaywallScreen = () => {
     )
   }
 
+  const restorePurchases = async () => {
+    try {
+      await Purchases.restoreTransactions();
+      Alert.alert("Success", "Your purchases have been restored");
+    } catch (e) {
+      Alert.alert("Error", "Something went wrong");
+    }
+  }
+
+  const handleAnnualPurchase = async () => {
+    if(!currentOffering?.annual) return;
+
+    const purchaserInfo = await Purchases.purchasePackage(currentOffering.annual);
+    console.log("You purchased: ", purchaserInfo);
+
+    if(purchaserInfo.customerInfo.entitlements.active.pro) {
+      navigation.goBack();
+      Alert.alert("Success!", "You are now a Pro Member!");
+    }
+  }
+
   const handleMonthlyPurchase = async () => {
     if(!currentOffering?.monthly) return;
 
@@ -86,17 +107,21 @@ const PaywallScreen = () => {
         </View>
       </View>
 
-      <TouchableOpacity onPress={handleMonthlyPurchase} className="items-center px-10 py-5 bg-[#e5962D] mx-10 rounded-full" activeOpacity={0.7}>
+      <TouchableOpacity onPress={handleAnnualPurchase} className="items-center px-10 py-5 bg-[#e5962D] mx-10 rounded-full" activeOpacity={0.7}>
         <Text className="text-white text-md text-center font-bold mb-1">FREE trial for 1 week...</Text>
         <Text className="text-white">{currentOffering.monthly?.product.priceString}/month after</Text>
       </TouchableOpacity>
 
       {currentOffering?.annual && (
-        <TouchableOpacity onPress={handleMonthlyPurchase} className="items-center px-10 py-5 bg-[#e5962D] mx-10 rounded-full" activeOpacity={0.7}>
+        <TouchableOpacity onPress={handleMonthlyPurchase} className="items-center px-10 py-5 border-2 border-[#e5962D] mt-2 mx-10 rounded-full" activeOpacity={0.7}>
           <Text className="text-white text-md text-center font-bold mb-1">Save{" "} {((1 - currentOffering.annual?.product.price! / (currentOffering.monthly?.product.price! * 12)) * 100).toPrecision(2)}% Annually</Text>
           <Text className="text-white">{currentOffering.annual?.product.priceString}/year</Text>
         </TouchableOpacity>
       ) }
+
+      <TouchableOpacity activeOpacity={0.7} onPress={restorePurchases}>
+        <Text className="text-center text-[#e5962D]">Restore Purchases</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 };
