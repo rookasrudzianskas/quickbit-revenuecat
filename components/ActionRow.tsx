@@ -20,17 +20,15 @@ const ActionRow = ({title, screen, color, requiresPro, icon, vertical}: Props) =
   const lockedForProMembers = requiresPro && !isProMember;
   return (
     <TouchableOpacity onPress={() => lockedForProMembers ? navigation.navigate('Paywall') : navigation.navigate(screen)} className={`flex m-2 flex-1 justify-center items-center py-6 shadow-sm rounded-lg space-x-2 ${vertical ? "flex-col" : "flex-row"}`} activeOpacity={0.7} style={{backgroundColor: lockedForProMembers ? "gray": color}}>
-      {lockedForProMembers ? (
+      {lockedForProMembers && (
         <View className="absolute top-4 right-4 rotate-12 items-center">
           <Ionicons name="lock-closed" size={20} color="white" />
           <Text className="text-white font-extrabold">PRO</Text>
         </View>
-      ) : (
-        <>
-          <Ionicons name={icon} size={24} color="white" />
-          <Text className="text-white font-bold text-lg">{title}</Text>
-        </>
       )}
+
+      <Ionicons name={icon} size={24} color="white" />
+      <Text className="text-white font-bold text-lg">{title}</Text>
     </TouchableOpacity>
   );
 };

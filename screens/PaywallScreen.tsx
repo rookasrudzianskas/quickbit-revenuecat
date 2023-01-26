@@ -1,13 +1,34 @@
 //@ts-nocheck
 import React from 'react';
-import {Text, View, StyleSheet, ScrollView, TouchableOpacity} from 'react-native';
+import {Text, View, StyleSheet, ScrollView, TouchableOpacity, ActivityIndicator, Alert} from 'react-native';
 import {Ionicons, MaterialCommunityIcons} from "@expo/vector-icons";
 import {useNavigation} from "@react-navigation/native";
 import useRevenueCat from "../hooks/useRevenueCat";
+import Purchases from "react-native-purchases";
 
 const PaywallScreen = () => {
   const navigation = useNavigation();
   const { currentOffering, customerInfo, isProMember } = useRevenueCat();
+
+  if(!currentOffering) {
+    return (
+      <View className="items-center justify-center h-screen">
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    )
+  }
+
+  const handleMonthlyPurchase = async () => {
+    if(!currentOffering?.monthly) return;
+
+    const purchaserInfo = await Purchases.purchasePackage(currentOffering.monthly);
+    console.log("You purchased: ", purchaserInfo);
+
+    if(purchaserInfo.customerInfo.entitlements.active.pro) {
+      navigation.goBack();
+      Alert.alert("Success!", "You are now a Pro Member!");
+    }
+  }
 
   return (
     <ScrollView className="bg-[#1A2F44] flex-1 relative">
@@ -64,6 +85,11 @@ const PaywallScreen = () => {
           </View>
         </View>
       </View>
+
+      <TouchableOpacity onPress={handleMonthlyPurchase} className="items-center px-10 py-5 bg-[#e5962D] mx-10 rounded-full" activeOpacity={0.7}>
+        <Text className="text-white text-md text-center font-bold mb-1">FREE trial for 1 week...</Text>
+        <Text className="text-white">{currentOffering.monthly?.product.priceString}/month after</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 };
