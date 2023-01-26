@@ -16,7 +16,7 @@ const typesOfMembership = {
 function useRevenueCat() {
   const [currentOffering, setCurrentOffering] = useState<PurchasesOffering | null>(null);
   const [customerInfo, setCustomerInfo] = useState<CustomerInfo | null>(null);
-  const isProMember = customerInfo?.activeSubscriptions.includes(typesOfMembership.yearly) || customerInfo?.activeSubscriptions.includes(typesOfMembership.monthly);
+  const isProMember = customerInfo?.entitlements.active.pro;
 
   useEffect(() => {
     const fetchData = async () => {
