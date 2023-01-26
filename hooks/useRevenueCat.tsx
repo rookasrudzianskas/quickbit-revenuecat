@@ -33,8 +33,21 @@ function useRevenueCat() {
       setCurrentOffering(offerings.current);
       setCustomerInfo(customerInfo);
     }
-    fetchData().catch((e) => console.log(e));
-  }, [])
+    fetchData().catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    const customerInfoUpdated = async (purchaserInfo: CustomerInfo) => {
+      setCustomerInfo(purchaserInfo);
+    }
+    Purchases.addCustomerInfoUpdateListener(customerInfoUpdated);
+  }, []);
+
+  return {
+    currentOffering,
+    customerInfo,
+    isProMember
+  }
 }
 
 export default useRevenueCat;
